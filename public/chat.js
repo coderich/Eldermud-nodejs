@@ -1,12 +1,11 @@
-function msgReceived(msg){
-  $clientCounter.html(msg.clients);
-}
+$(document).ready(function() {
+	$console = $("#console");
+	$cmd = $("#cmd");
 
-$(document).ready(function () {
-  $clientCounter = $("#client_count")
-
-  var socket = io.connect();
-  socket.on('connect', function() {
-	socket.on('message', function(msg) { msgReceived(msg) });
-  });
+	var socket = io.connect();
+	socket.on('connect', function() {
+		socket.on('message', function(msg) {
+			$console.value = $console.value + msg;
+		});
+	});
 });
