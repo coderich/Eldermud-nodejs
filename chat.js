@@ -35,14 +35,20 @@ io.sockets.on('connection', function(client) {
 	});
 
 	client.on('message', function(msg) {
-		client.send("You say: " + msg);
-		client.broadcast.send("Someone says: " + msg);
-	});
+		var words = msg.split(" ");
+		var cmd = words[0];
 
-	client.on('img', function(url) {
-		io.sockets.emit('img', {
-			img : img
-		});
+		switch (cmd) {
+		case 'img':
+			io.sockets.emit('img', {
+				img : img
+			});
+			break;
+		default:
+			client.send("You say: " + msg);
+			client.broadcast.send("Someone says: " + msg);
+			break;
+		}
 	});
 });
 
