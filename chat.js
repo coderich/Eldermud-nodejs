@@ -27,6 +27,10 @@ io.sockets.on('connection', function(client) {
 		delete clients[client.id];
 		client.broadcast.send("Someone has just disconnected...");
 	});
+
+	client.on('message', function(msg) {
+		client.broadcast.send(msg);
+	});
 });
 
 app.listen(8080);
