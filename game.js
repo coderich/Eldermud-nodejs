@@ -58,7 +58,7 @@ io.sockets.on('connection', function(client) {
 				if (typeof(room[dir]) !== 'undefined') {
 					client.set('room', roomId);
 					client.join(roomId);
-					cliet.emit('fov', Object.keys(map[roomId]));
+					client.emit('fov', Object.keys(map[roomId]));
 					client.broadcast.send('Someone has just entered the room, say hello!');
 					io.sockets.in(roomId).emit('who', { who : Object.keys(io.sockets.clients(roomId)) });
 				} else {
