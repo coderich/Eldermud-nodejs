@@ -22,15 +22,15 @@ io.sockets.on('connection', function(client) {
 	clients[client.id] = client;
 	client.send("Hello, Welcome to ElderMud!");
 	client.broadcast.send("Someone has just entered the room, say hello!");
-	client.broadcast.emit('who', {
-		who : [ 'richard', 'michelle' ]
+	io.sockets.emit('who', {
+		who : [ Object.keys(clients) ]
 	});
 
 	client.on('disconnect', function() {
 		delete clients[client.id];
 		client.broadcast.send("Someone has just disconnected...");
-		client.broadcast.emit('who', {
-			who : [ 'richard' ]
+		io.sockets.emit('who', {
+			who : [ Object.keys(clients) ]
 		});
 	});
 
