@@ -62,9 +62,10 @@ io.sockets.on('connection', function(client) {
 					client.broadcast.send('Someone has just entered the room, say hello!');
 					io.sockets.in(roomId).emit('who', { who : Object.keys(io.sockets.clients(roomId)) });
 				} else {
-					client.send("Sorry, there is nothing in that direction");
+					client.send("Sorry, there is nothing in that direction (" + dir + ")");
 				}
 			});
+			break;
 		default:
 			client.send("You say: " + msg);
 			client.get('room', function(err, room) {
