@@ -16,8 +16,9 @@ app.get('/', function(req, res) {
 });
 
 io.sockets.on('connection', function(client) {
-	//io.sockets.socket(client.id).send("Hello, Welcome to ElderMud!");
-	io.broadcast.send("Someone has just entered the room, say hello!");
+	io.sockets.socket(client.id).send("Hello, Welcome to ElderMud!");
+	client.send("Chat and have fun");
+	//io.broadcast.send("Someone has just entered the room, say hello!");
 
 	client.on('disconnect', function() {
 		io.broadcast.send("Someone has just disconnected...");
