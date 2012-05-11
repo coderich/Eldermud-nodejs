@@ -46,10 +46,32 @@ io.sockets.on('connection', function(client) {
 	});
 
 	client.on('message', function(msg) {
-		client.send("You say: " + msg);
-		client.get('room', function(err, room) {
-			client.broadcast.to(room).send("Someone says: " + msg);
-		});
+		var words = msg.split(/\b/);
+		var cmd = words[0];
+		
+		switch (cmd)
+		{
+		case 'go':
+			var dir = words[1];
+			client.get('room', function(err, roomId) {
+				var room = map[roomId];
+				if (room[dir] !== 'undefined') {
+					client.set('room', roomId);
+					client.join(roomId);
+					cliet.emit('fov', Object.keys(map[roomId]));
+					client.broadcast.send('Someone has just entered the room, say hello!');
+					io.sockets.in(roomId)emit('who', { who : Object.keys(io.sockets.clients(roomId)) });
+				} else {
+					client.send("Sorry, there is nothing in that direction");
+				}
+			});
+		default:
+			client.send("You say: " + msg);
+			client.get('room', function(err, room) {
+				client.broadcast.to(room).send("Someone says: " + msg);
+			});
+			break;
+		}
 	});
 });
 
