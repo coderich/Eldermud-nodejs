@@ -15,13 +15,34 @@ app.get('/', function(req, res) {
 	res.render('chat');
 });
 
+var clients = {};
+
+Object.size = function(obj) {
+	var size = 0, key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key))
+			size++;
+	}
+	return size;
+}
+
+function broadcast(msg) {
+	if (Object.size(clients)) {
+		io.broadcast.send(msg);
+	}
+}
+
 io.sockets.on('connection', function(client) {
-	io.sockets.socket(client.id).send("Hello, Welcome to ElderMud!");
-	client.send("Chat and have fun");
-	//io.broadcast.send("Someone has just entered the room, say hello!");
+	// Notify everyone else someone has arrived
+	broadcast("Someone has just entered the room, say hello!");
+
+	// Add client to list and give welcome
+	clients[client.id] = client;
+	client.send("Hello, Welcome to ElderMud!");
 
 	client.on('disconnect', function() {
-		io.broadcast.send("Someone has just disconnected...");
+		clients.splice(client.id, 1);
+		broadcast("Someone has just disconnected...");
 	});
 });
 
