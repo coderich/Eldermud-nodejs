@@ -12,7 +12,7 @@ app.get('/*.(js|css)', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-	res.render('index');
+	res.render('example2');
 });
 
 var activeClients = 0;
