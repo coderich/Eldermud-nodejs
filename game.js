@@ -37,16 +37,12 @@ io.sockets.on('connection', function(client) {
 	client.emit('fov', Object.keys(map[room]));
 	client.broadcast.send("Someone has just entered the game!");
 
-	/*
-	 * io.sockets.in(room).emit('who', { who : io.sockets.clients(room) });
-	 */
+	io.sockets.in(room).emit('who', { who : Object.keys(io.sockets.clients(room)) });
 
 	client.on('disconnect', function() {
 		delete clients[client.id];
 		client.broadcast.send("Someone has just disconnected...");
-		/*
-		 * io.sockets.emit('who', { who : Object.keys(clients) });
-		 */
+		io.sockets.in(room).emit('who', { who : Object.keys(io.sockets.clients(room)) });
 	});
 
 	client.on('message', function(msg) {
