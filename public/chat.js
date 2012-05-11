@@ -19,8 +19,8 @@ $(document).ready(function() {
 			console.val(console.val() + msg + "\n");
 			console.scrollTop(console[0].scrollHeight - console.height());
 		});
-		socket.on('who', function(who) {
-			who.val(who.names.join("\n"));
+		socket.on('who', function(o) {
+			who.val(o.who.join("\n"));
 		});
 	});
 });
