@@ -41,7 +41,7 @@ io.sockets.on('connection', function(client) {
 	client.send("Hello, Welcome to ElderMud!");
 
 	client.on('disconnect', function() {
-		clients.splice(client.id, 1);
+		delete clients[client.id];
 		broadcast("Someone has just disconnected...");
 	});
 });
