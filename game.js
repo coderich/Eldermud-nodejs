@@ -60,7 +60,7 @@ io.sockets.on('connection', function(client) {
 					var newRoom = map[newRoomId];
 					client.set('room', newRoomId);
 					client.join(newRoomId);
-					client.emit('fov', Object.keys(newRoom);
+					client.emit('fov', Object.keys(newRoom));
 					client.broadcast.send('Someone has just entered the room, say hello!');
 					io.sockets.in(roomId).emit('who', { who : Object.keys(io.sockets.clients(newRoomId)) });
 				} else {
