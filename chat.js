@@ -23,7 +23,7 @@ io.sockets.on('connection', function(client) {
 	client.send("Hello, Welcome to ElderMud!");
 	client.broadcast.send("Someone has just entered the room, say hello!");
 	client.broadcast.emit('who', {
-		who : [ 'richard, michelle' ]
+		who : [ 'richard', 'michelle' ]
 	});
 
 	client.on('disconnect', function() {
