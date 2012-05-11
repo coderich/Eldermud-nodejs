@@ -56,11 +56,13 @@ io.sockets.on('connection', function(client) {
 			client.get('room', function(err, roomId) {
 				var room = map[roomId];
 				if (typeof(room[dir]) !== 'undefined') {
-					client.set('room', roomId);
-					client.join(roomId);
-					client.emit('fov', Object.keys(map[roomId]));
+					var newRoomId = room[dir];
+					var newRoom = map[newRoomId];
+					client.set('room', newRoomId);
+					client.join(newRoomId);
+					client.emit('fov', Object.keys(newRoom);
 					client.broadcast.send('Someone has just entered the room, say hello!');
-					io.sockets.in(roomId).emit('who', { who : Object.keys(io.sockets.clients(roomId)) });
+					io.sockets.in(roomId).emit('who', { who : Object.keys(io.sockets.clients(newRoomId)) });
 				} else {
 					client.send("Sorry, there is nothing in that direction (" + dir + ")");
 				}
