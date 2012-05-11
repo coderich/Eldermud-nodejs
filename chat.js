@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 
 socket.sockets.on('connection', function(client) {
 	socket.sockets.json.send({
-		clients : socket.sockets.length
+		clients : Object.size(socket.sockets)
 	});
 	client.on('disconnect', function() {
 		clientDisconnect(client)
@@ -26,7 +26,7 @@ socket.sockets.on('connection', function(client) {
 
 function clientDisconnect(client) {
 	socket.sockets.json.send({
-		clients : socket.sockets.length
+		clients : Object.size(socket.sockets)
 	});
 }
 
