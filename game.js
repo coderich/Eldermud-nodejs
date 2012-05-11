@@ -16,13 +16,7 @@ app.get('/', function(req, res) {
 });
 
 var clients = {};
-var map = [ {
-	id : 1,
-	e : 2
-}, {
-	id : 2,
-	w : 1
-} ];
+var map = {1:{e:2}, 2:{w:1}}; 
 
 io.sockets.on('connection', function(client) {
 	// Create random room
@@ -33,10 +27,9 @@ io.sockets.on('connection', function(client) {
 	client.set('room', room);
 	client.join(room);
 	client.send("Hello, Welcome to ElderMud!");
-	client.broadcast.send("Someone has just entered the room, say hello!");
-
-	io.sockets.emit('who', {
-		who : Object.keys(clients)
+	client.broadcast.send("Someone has just entered the game!");
+	io.sockets.in(room).emit('who', {
+		who : io.sockets.clients(room)
 	});
 
 	client.on('disconnect', function() {
