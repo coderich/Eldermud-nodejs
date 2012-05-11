@@ -58,6 +58,7 @@ io.sockets.on('connection', function(client) {
 				if (typeof(room[dir]) !== 'undefined') {
 					var newRoomId = room[dir];
 					var newRoom = map[newRoomId];
+					client.leave(roomId);
 					client.set('room', newRoomId);
 					client.join(newRoomId);
 					client.emit('fov', Object.keys(newRoom));
