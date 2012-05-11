@@ -38,6 +38,12 @@ io.sockets.on('connection', function(client) {
 		client.send("You say: " + msg);
 		client.broadcast.send("Someone says: " + msg);
 	});
+
+	client.on('img', function(url) {
+		io.sockets.emit('img', {
+			img : img
+		});
+	});
 });
 
 app.listen(8080);
