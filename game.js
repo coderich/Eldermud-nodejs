@@ -55,7 +55,7 @@ io.sockets.on('connection', function(client) {
 			var dir = words[1];
 			client.get('room', function(err, roomId) {
 				var room = map[roomId];
-				if (room[dir] !== 'undefined') {
+				if (typeof(room[dir]) !== 'undefined') {
 					client.set('room', roomId);
 					client.join(roomId);
 					cliet.emit('fov', Object.keys(map[roomId]));
