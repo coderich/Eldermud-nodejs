@@ -17,32 +17,15 @@ app.get('/', function(req, res) {
 
 var clients = {};
 
-Object.size = function(obj) {
-	var size = 0, key;
-	for (key in obj) {
-		if (obj.hasOwnProperty(key))
-			size++;
-	}
-	return size;
-}
-
-function broadcast(msg) {
-	if (Object.size(clients)) {
-		io.broadcast.send(msg);
-	}
-}
-
 io.sockets.on('connection', function(client) {
-	// Notify everyone else someone has arrived
-	broadcast("Someone has just entered the room, say hello!");
-
 	// Add client to list and give welcome
 	clients[client.id] = client;
 	client.send("Hello, Welcome to ElderMud!");
+	client.broadcast.send("Someone has just entered the room, say hello!");
 
 	client.on('disconnect', function() {
 		delete clients[client.id];
-		broadcast("Someone has just disconnected...");
+		client.broadcast.send("Someone has just disconnected...");
 	});
 });
 
