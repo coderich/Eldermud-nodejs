@@ -16,19 +16,25 @@ app.get('/', function(req, res) {
 });
 
 var clients = {};
-var map = [{id:1, e:2}, {id:2, w:1}];
+var map = [ {
+	id : 1,
+	e : 2
+}, {
+	id : 2,
+	w : 1
+} ];
 
 io.sockets.on('connection', function(client) {
 	// Create random room
-	var room = Math.floor( (Math.random() * 2) + 1);
-	
+	var room = Math.floor((Math.random() * 2) + 1);
+
 	// Add client to list and give welcome
 	clients[client.id] = client;
 	client.set('room', room);
 	client.join(room);
 	client.send("Hello, Welcome to ElderMud!");
 	client.broadcast.send("Someone has just entered the room, say hello!");
-	
+
 	io.sockets.emit('who', {
 		who : Object.keys(clients)
 	});
@@ -43,7 +49,9 @@ io.sockets.on('connection', function(client) {
 
 	client.on('message', function(msg) {
 		client.send("You say: " + msg);
-		client.broadcast.to(client.get('room')).send("Someone says: " + msg);
+		client.get('room', function(err, room) {
+			client.broadcast.to(room).send("Someone says: " + msg);
+		});
 	});
 });
 
