@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var socket = io.connect();
 	socket.on('connect', function() {
 		socket.on('message', function(msg) {
-			$console.value = $console.value + msg;
+			$($console).val($($console).val() + msg.value);
 		});
 	});
 });
