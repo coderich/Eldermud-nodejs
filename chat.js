@@ -40,8 +40,9 @@ io.sockets.on('connection', function(client) {
 
 		switch (cmd) {
 		case 'img':
+			var url = words[1];
 			io.sockets.emit('img', {
-				img : img
+				url : url
 			});
 			break;
 		default:
