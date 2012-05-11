@@ -46,7 +46,7 @@ io.sockets.on('connection', function(client) {
 	});
 
 	client.on('message', function(msg) {
-		var words = msg.split(/\b/);
+		var words = msg.split(" ");
 		var cmd = words[0];
 		
 		switch (cmd)
