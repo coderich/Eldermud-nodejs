@@ -23,14 +23,14 @@ io.sockets.on('connection', function(client) {
 	client.send("Hello, Welcome to ElderMud!");
 	client.broadcast.send("Someone has just entered the room, say hello!");
 	io.sockets.emit('who', {
-		who : [ Object.keys(clients) ]
+		who : Object.keys(clients).split(',')
 	});
 
 	client.on('disconnect', function() {
 		delete clients[client.id];
 		client.broadcast.send("Someone has just disconnected...");
 		io.sockets.emit('who', {
-			who : [ Object.keys(clients) ]
+			who : Object.keys(clients).split(',')
 		});
 	});
 
