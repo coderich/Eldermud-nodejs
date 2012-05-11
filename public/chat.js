@@ -16,6 +16,7 @@ $(document).ready(function() {
 	socket.on('connect', function() {
 		socket.on('message', function(msg) {
 			console.val(console.val() + msg + "\n");
+			console.scrollTop(console[0].scrollHeight - console.height());
 		});
 	});
 });
