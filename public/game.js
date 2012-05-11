@@ -24,7 +24,7 @@ $(document).ready(function() {
 			who.val(o.who.join("\n"));
 		});
 		socket.on('fov', function(o) {
-			fov.val(o.fov);
+			fov.val(o.join());
 		});
 	});
 });

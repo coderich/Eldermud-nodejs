@@ -34,7 +34,7 @@ io.sockets.on('connection', function(client) {
 	client.set('room', room);
 	client.join(room);
 	client.send("Hello, Welcome to ElderMud!");
-	client.emit('fov', map[room]);
+	client.emit('fov', Object.keys(map[room]));
 	client.broadcast.send("Someone has just entered the game!");
 
 	/*
