@@ -1,5 +1,5 @@
 var app = require('express').createServer();
-var socket = require('socket.io').listen(app);
+var io = require('socket.io').listen(app);
 
 require('jade');
 app.set('view engine', 'jade');
@@ -15,11 +15,12 @@ app.get('/', function(req, res) {
 	res.render('chat');
 });
 
-socket.sockets.on('connection', function(client) {
-	socket.socket(client.id).send("Hello, Welcome to ElderMud!");
-	socket.broadcast.send("Someone has just entered the room, say hello!");
+io.sockets.on('connection', function(client) {
+	io.sockets.socket(client.id).send("Hello, Welcome to ElderMud!");
+	io.broadcast.send("Someone has just entered the room, say hello!");
+
 	client.on('disconnect', function() {
-		socket.broadcast.send("Someone has just disconnected...");
+		io.broadcast.send("Someone has just disconnected...");
 	});
 });
 
