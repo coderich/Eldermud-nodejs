@@ -20,7 +20,7 @@ $(document).ready(function() {
 			console.scrollTop(console[0].scrollHeight - console.height());
 		});
 		socket.on('who', function(o) {
-			who.val(o.who.join("\\n"));
+			who.val(o.who.join().replace(",", "\n"));
 		});
 	});
 });
