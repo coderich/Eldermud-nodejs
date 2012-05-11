@@ -29,7 +29,8 @@ io.sockets.on('connection', function(client) {
 	});
 
 	client.on('message', function(msg) {
-		client.broadcast.send(msg);
+		client.send("You say: " + msg);
+		client.broadcast.send("Someone says: " + msg);
 	});
 });
 
