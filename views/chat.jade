@@ -8,11 +8,11 @@ html(lang="en")
     body
         #heading
             h1 Welcome to ElderMud!
-        #content
+        #content(width="500px")
             p
-                textarea(readonly="readonly")
+                textarea(name="console", readonly="readonly")
             p
-                input(type="text")
+                input(name="cmd", type="text")
         #footer
             p
                 span#client_count 0 connected clients
