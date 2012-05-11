@@ -2,6 +2,7 @@ $(document).ready(function() {
 	var console = $("#console");
 	var cmd = $("#cmd");
 	var who = $("#who");
+	var fov = $("#fov");
 	var socket = io.connect();
 
 	// Send message to server
@@ -12,7 +13,7 @@ $(document).ready(function() {
 			socket.send(cmd.val());
 			cmd.val("");
 		}
-	})
+	});
 
 	socket.on('connect', function() {
 		socket.on('message', function(msg) {
@@ -21,6 +22,9 @@ $(document).ready(function() {
 		});
 		socket.on('who', function(o) {
 			who.val(o.who.join("\n"));
+		});
+		socket.on('fov', function(o) {
+			fov.val(o.fov);
 		});
 	});
 });
