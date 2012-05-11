@@ -16,18 +16,11 @@ app.get('/', function(req, res) {
 });
 
 socket.sockets.on('connection', function(client) {
-	socket.sockets.json.send({
-		value : "Hello, Welcome to ElderMud!"
-	});
+	socket.send("Hello, Welcome to ElderMud!");
+	socket.broadcast.send("Someone has just entered the room, say hello!");
 	client.on('disconnect', function() {
-		clientDisconnect(client)
+		socket.broadcast.send("Someone has just disconnected...");
 	});
 });
-
-function clientDisconnect(client) {
-	socket.sockets.json.send({
-		value : "Someone has diconnected..."
-	});
-}
 
 app.listen(8080);
