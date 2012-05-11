@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	var console = $("#console");
 	var cmd = $("#cmd");
+	var who = $("#who");
 	var socket = io.connect();
 
 	// Send message to server
@@ -17,6 +18,9 @@ $(document).ready(function() {
 		socket.on('message', function(msg) {
 			console.val(console.val() + msg + "\n");
 			console.scrollTop(console[0].scrollHeight - console.height());
+		});
+		socket.on('who', function(who) {
+			who.val(who.names.join("\n"));
 		});
 	});
 });
