@@ -62,8 +62,10 @@ io.sockets.on('connection', function(client) {
 					client.set('room', newRoomId);
 					client.join(newRoomId);
 					client.emit('fov', Object.keys(newRoom));
-					client.broadcast.send('Someone has just entered the room, say hello!');
+					client.broadcast.to(newRoomId).send('Someone has just entered the room, say hello!');
+					client.broadcast.to(roomId).send('Someone has just left the room...');
 					io.sockets.in(newRoomId).emit('who', { who : Object.keys(io.sockets.clients(newRoomId)) });
+					io.sockets.in(roomId).emit('who', { who : Object.keys(io.sockets.clients(roomId)) });
 				} else {
 					client.send("Sorry, there is nothing in that direction (" + dir + ")");
 				}
