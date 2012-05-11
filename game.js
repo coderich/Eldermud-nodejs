@@ -16,7 +16,7 @@ app.get('/', function(req, res) {
 });
 
 var clients = {};
-var map = {1:{e:2}, 2:{w:1}}; 
+var map = {"1":{"e":"2"}, "2":{"w":"1"}};
 
 io.sockets.on('connection', function(client) {
 	// Create random room
