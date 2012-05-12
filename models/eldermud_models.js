@@ -27,9 +27,6 @@
 			args.players.on('remove', function(player) {
 				args.io.sockets.send("Someone has just left the game...");
 			});
-			args.players.on('change:room', function(room) {
-				console.log("CHANGE ROOM");
-			});
 		}
 	});
 
@@ -46,6 +43,9 @@
 			if (!args || !args.socket) {
 				throw "Player InvalidConstrutorArgs";
 			}
+			this.on('change:room', function(room) {
+				console.log("CHANGE ROOM: " + room.get('description'));
+			});
 		}
 	});
 	models.PlayerCollection = Backbone.Collection.extend({
