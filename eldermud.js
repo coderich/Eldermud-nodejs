@@ -18,13 +18,14 @@ var players = new models.PlayerCollection();
 var app = new models.AppModel({io:io, map:map, players:players});
 
 io.sockets.on('connection', function(client) {
+	// Add client to a random room...
+	var player = new models.Player({room:rooms.at(Math.floor((Math.random() * 2))), socket:client});
+	players.add(player);
+	
 	client.on('disconnect', function() {
 		console.log("TRYIING TO REMOVE PLAYER: " + client.id);
-		players.remove(players.getByCid(client.id));
+		players.remove(player);
 	});
-
-	// Add client to a random room...
-	players.add({room:rooms.at(Math.floor((Math.random() * 2))), socket:client, cid:client.id});
 });
 
 server.listen(8080);
