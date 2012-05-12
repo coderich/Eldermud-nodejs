@@ -1,7 +1,7 @@
 var server = require('express').createServer();
 var _ = require('underscore')._;
 var backbone = require('backbone');
-var io = require('socket.io').listen(app);
+var io = require('socket.io').listen(server);
 var models = require('./models/eldermud_models');
 var jade = require('jade');
 
