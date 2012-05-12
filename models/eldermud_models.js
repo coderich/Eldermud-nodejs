@@ -21,9 +21,9 @@
 			}
 			args.players.on('add', function(player) {
 				player.get('socket').send("Hello, Welcome to ElderMud!");
+				player.get('socket').broadcast("Seomeone has just entered the game!");
 			});
 			args.players.on('remove', function(player) {
-				console.log("PLAYER WAS REMOVED");
 				args.io.sockets.send("Someone has just left the game...");
 			});
 			args.players.on('change:room', function(room) {

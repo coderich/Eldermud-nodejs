@@ -23,7 +23,6 @@ io.sockets.on('connection', function(client) {
 	players.add(player);
 	
 	client.on('disconnect', function() {
-		console.log("TRYIING TO REMOVE PLAYER: " + client.id);
 		players.remove(player);
 	});
 });
