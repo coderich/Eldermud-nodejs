@@ -31,7 +31,7 @@ io.sockets.on('connection', function(socket) {
 	
 	socket.on('message', function(msg) {
 		var words = msg.split(" ");
-		io.sockets.broadcast.send(helper.getCommand(words[0]));
+		io.sockets.send(helper.getCommand(words[0]));
 	});
 });
 
