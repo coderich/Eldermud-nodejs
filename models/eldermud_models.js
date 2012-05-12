@@ -55,4 +55,6 @@
 	models.RoomCollection = Backbone.Collection.extend({
 		model : models.Room
 	});
+	
+	return this;
 });
