@@ -2,6 +2,8 @@ var server = require('express').createServer();
 var io = require('socket.io').listen(server);
 var models = require('./models/eldermud_models');
 var jade = require('jade');
+var helper = require('./helpers/helper.js');
+var config = require('./config.config.js');
 
 server.set('view engine', 'jade');
 server.set('view options', {layout: false});
@@ -17,14 +19,19 @@ var map = new models.Map({rooms:rooms});
 var players = new models.PlayerCollection();
 var app = new models.AppModel({io:io, map:map, players:players});
 
-io.sockets.on('connection', function(client) {
+io.sockets.on('connection', function(socket) {
 	// Add client to a random room...
-	var player = new models.Player({socket:client});
+	var player = new models.Player({socket:socket});
 	player.set({room:rooms.at(0)});
 	players.add(player);
 	
-	client.on('disconnect', function() {
+	socket.on('disconnect', function() {
 		players.remove(player);
+	});
+	
+	socket.on('message', function(msg) {
+		var words = msg.split(" ");
+		io.sockets.broadcast.send(helper.getMessage(words[0]));
 	});
 });
 

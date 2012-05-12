@@ -44,7 +44,6 @@
 				throw "Player InvalidConstrutorArgs";
 			}
 			this.on('change:room', function(room) {
-				console.log("CHANGE ROOM: " + room.get('title'));
 			});
 		}
 	});
