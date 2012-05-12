@@ -1,6 +1,4 @@
 var app = require('express').createServer();
-var _ = require('underscore')._;
-var backbone = require('backbone');
 var io = require('socket.io').listen(app);
 
 require('jade');
