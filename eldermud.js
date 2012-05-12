@@ -19,6 +19,7 @@ var app = new models.AppModel({io:io, map:map, players:players});
 
 io.sockets.on('connection', function(client) {
 	client.on('disconnect', function() {
+		console.log("TRYIING TO REMOVE PLAYER: " + client.id);
 		players.remove(players.getByCid(client.id));
 	});
 
