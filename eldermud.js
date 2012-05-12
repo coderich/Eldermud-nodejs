@@ -3,7 +3,7 @@ var io = require('socket.io').listen(server);
 var models = require('./models/eldermud_models');
 var jade = require('jade');
 var helper = require('./helpers/helper.js');
-var config = require('./config.config.js');
+var config = require('./config/config.js');
 
 server.set('view engine', 'jade');
 server.set('view options', {layout: false});
