@@ -12,15 +12,15 @@
 	};
 
 	var aliases = new Object();
-	aliases[CMD_ATTACK] = [ 'attack' ];
-	aliases[CMD_NORTH] = [ 'north' ];
-	aliases[CMD_SOUTH] = [ 'south' ];
-	aliases[CMD_EAST] = [ 'east' ];
-	aliases[CMD_WEST] = [ 'west' ];
-	aliases[CMD_NORTHEAST] = [ 'northeast', 'ne' ];
-	aliases[CMD_NORTHWEST] = [ 'northwest', 'nw' ];
-	aliases[CMD_SOUTHEAST] = [ 'southeast', 'se' ];
-	aliases[CMD_SOUTHWEST] = [ 'southwest', 'sw' ];
+	aliases[constants.CMD_ATTACK] = [ 'attack' ];
+	aliases[constants.CMD_NORTH] = [ 'north' ];
+	aliases[constants.CMD_SOUTH] = [ 'south' ];
+	aliases[constants.CMD_EAST] = [ 'east' ];
+	aliases[constants.CMD_WEST] = [ 'west' ];
+	aliases[constants.CMD_NORTHEAST] = [ 'northeast', 'ne' ];
+	aliases[constants.CMD_NORTHWEST] = [ 'northwest', 'nw' ];
+	aliases[constants.CMD_SOUTHEAST] = [ 'southeast', 'se' ];
+	aliases[constants.CMD_SOUTHWEST] = [ 'southwest', 'sw' ];
 
 	exports.constants = constants;
 	exports.aliases = aliases;
