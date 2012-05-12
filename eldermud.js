@@ -12,11 +12,7 @@ server.get('/', function(req, res) {
 	res.render('eldermud_view');
 });
 
-console.log(models.Room);
-/*
-var room1 = new models.Room({id:1, e:2});
-var room2 = new models.Room({id:2, w:1});
-var rooms = new models.RoomCollection([room1, room2]);
+var rooms = new models.RoomCollection([new models.Room({id:1, e:2}), new models.Room({id:2, w:1})]);
 var map = new models.Map({rooms: rooms});
 var players = new models.PlayerCollection();
 var app = new models.AppModel({io: io, map: map, players: players});
@@ -27,6 +23,5 @@ io.sockets.on('connection', function(client) {
 	// Add client to a random room...
 	players.add({room: rooms.at(Math.floor((Math.random() * 2) + 1)), socket: client});
 });
-*/
 
 server.listen(8080);
