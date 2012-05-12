@@ -12,7 +12,7 @@ module.exports = {
 
 		// Routes
 		server.get('/*.(js|css)', function(req, res) {
-			res.sendfile('../public' + req.url);
+			res.sendfile('./public' + req.url);
 		});
 		server.get('/', function(req, res) {
 			res.render('eldermud_view');

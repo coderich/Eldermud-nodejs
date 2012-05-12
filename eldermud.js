@@ -1,5 +1,4 @@
-//var server = require('./controllers/http_controller').createServer();
-var server = require('express').createServer();
+var server = require('./controllers/http_controller').createServer();
 var io = require('socket.io').listen(server);
 var models = require('./models/eldermud_models');
 var helper = require('./helpers/helper.js');
