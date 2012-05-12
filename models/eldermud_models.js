@@ -20,7 +20,7 @@
 				player.get('socket').send("Hello, Welcome to ElderMud!");
 			});
 			this.players.on('change:room', function(room) {
-				
+
 			});
 		}
 	});
@@ -55,6 +55,4 @@
 	models.RoomCollection = Backbone.Collection.extend({
 		model : models.Room
 	});
-	
-	return this;
-});
+})()
