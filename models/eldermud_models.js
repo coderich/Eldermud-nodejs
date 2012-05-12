@@ -17,7 +17,7 @@
 	models.AppModel = Backbone.Model.extend({
 		initialize : function(args) {
 			if (!args || !args.io || !args.map || !args.players) {
-				throw "InvalidConstructorArgs";
+				throw "AppModel InvalidConstructorArgs";
 			}
 			this.players.on('add', function(player) {
 				player.get('socket').send("Hello, Welcome to ElderMud!");
@@ -39,7 +39,7 @@
 	models.Player = Backbone.Model.extend({
 		initialize : function(args) {
 			if (!args || !args.room) {
-				throw "InvalidConstrutorArgs";
+				throw "Player InvalidConstrutorArgs";
 			}
 		}
 	});
@@ -51,7 +51,7 @@
 	models.Room = Backbone.Model.extend({
 		initialize : function(args) {
 			if (!args || !args.title || !args.description) {
-				throw "InvalidConstructorArgs";
+				throw "Room InvalidConstructorArgs";
 			}
 		}
 	});
