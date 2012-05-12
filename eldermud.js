@@ -18,10 +18,12 @@ var players = new models.PlayerCollection();
 var app = new models.AppModel({io:io, map:map, players:players});
 
 io.sockets.on('connection', function(client) {
-	client.on('disconnect', function() {});
+	client.on('disconnect', function() {
+		players.remove(players.getByCid(client.id));
+	});
 
 	// Add client to a random room...
-	players.add({room:rooms.at(Math.floor((Math.random() * 2))), socket:client});
+	players.add({room:rooms.at(Math.floor((Math.random() * 2))), socket:client, cid:client.id});
 });
 
 server.listen(8080);

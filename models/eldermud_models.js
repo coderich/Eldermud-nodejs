@@ -22,6 +22,9 @@
 			args.players.on('add', function(player) {
 				player.get('socket').send("Hello, Welcome to ElderMud!");
 			});
+			args.players.on('remove', function(player) {
+				args.io.sockets.send("Someone has just left the game...");
+			});
 			args.players.on('change:room', function(room) {
 			});
 		}
