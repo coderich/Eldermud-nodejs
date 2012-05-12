@@ -4,6 +4,9 @@
 	// server as well as the client
 	var server = false, models;
 	if (typeof exports !== 'undefined') {
+		var _ = require('underscore')._;
+		var Backbone = require('backbone');
+
 		models = exports;
 		server = true;
 	} else {
