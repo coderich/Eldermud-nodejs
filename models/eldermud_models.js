@@ -43,7 +43,7 @@
 	// A Player model
 	models.Player = Backbone.Model.extend({
 		initialize : function(args) {
-			if (!args || !args.room) {
+			if (!args || !args.socket) {
 				throw "Player InvalidConstrutorArgs";
 			}
 		}

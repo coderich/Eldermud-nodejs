@@ -19,7 +19,9 @@ var app = new models.AppModel({io:io, map:map, players:players});
 
 io.sockets.on('connection', function(client) {
 	// Add client to a random room...
-	var player = new models.Player({room:rooms.at(Math.floor((Math.random() * 2))), socket:client});
+	var room = rooms.at(Math.floor((Math.random() * 2))); 
+	var player = new models.Player({socket:client});
+	player.set('room', room);
 	players.add(player);
 	
 	client.on('disconnect', function() {
