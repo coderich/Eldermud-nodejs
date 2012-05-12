@@ -14,7 +14,7 @@ server.get('/', function(req, res) {
 	res.render('eldermud_view');
 });
 
-console.log(models);
+console.log(models.Room);
 /*
 var room1 = new models.Room({id:1, e:2});
 var room2 = new models.Room({id:2, w:1});
