@@ -19,11 +19,10 @@
 			if (!args || !args.io || !args.map || !args.players) {
 				throw "AppModel InvalidConstructorArgs";
 			}
-			this.players.on('add', function(player) {
+			args.players.on('add', function(player) {
 				player.get('socket').send("Hello, Welcome to ElderMud!");
 			});
-			this.players.on('change:room', function(room) {
-
+			args.players.on('change:room', function(room) {
 			});
 		}
 	});
