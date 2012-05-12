@@ -31,4 +31,4 @@ io.sockets.on('connection', function(client) {
 });
 */
 
-app.listen(8080);
+server.listen(8080);
