@@ -18,7 +18,7 @@ server.get('/', function(req, res) {
 	res.render('eldermud_view');
 });
 
-var rooms = new models.RoomCollection([{id:1, e:2}, {id:2, w:1}]);
+var rooms = new models.models.RoomCollection([{id:1, e:2}, {id:2, w:1}]);
 var map = new models.Map({rooms: rooms});
 var players = new models.PlayerCollection();
 var app = new models.AppModel({io: io, map: map, players: players});
