@@ -18,9 +18,6 @@ module.exports = {
 			res.render('eldermud_view');
 		});
 
-		// Start server
-		server.listen(8080);
-
 		// Return...
 		return server;
 	}
