@@ -1,11 +1,16 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
 
+var Map = requre('Map');
+var PlayerCollection = requre('PlayerCollection');
+
 module.exports = Backbone.Model.extend({
 	defaults : {
-		map : new Map()
-	},
+		map : new Map(),
+		players : new PlayerCollection()
+	}
 	
+	/*
 	initialize : function(args) {
 		if (!args || !args.map || !args.players) {
 			throw "AppModel InvalidConstructorArgs";
@@ -21,4 +26,5 @@ module.exports = Backbone.Model.extend({
 			args.io.sockets.send("Someone has just left the game...");
 		});
 	}
+	*/
 });

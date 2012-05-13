@@ -30,8 +30,7 @@ module.exports = {
 		});
 
 		return new Data({
-			map : map,
-			players : new PlayerCollection()
+			map : map
 		});
 	}
 };

@@ -1,5 +1,13 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
+var data = require('data_controller').load();
+
+// Every time a player is added
+data.get('players').on('add', function(player) {
+	module.exports.trigger('ioServerToAll', {
+		'msg' : 'A new player has arrived!'
+	});
+});
 
 module.exports = {
 	// IO Handling
@@ -10,7 +18,7 @@ module.exports = {
 				'msg' : 'Someone has just disconnected...'
 			});
 		});
-		
+
 		// Message handler
 		socket.on('message', function(msg) {
 			module.exports.trigger('ioSocketToAll', {
@@ -19,18 +27,9 @@ module.exports = {
 			});
 		});
 
-		// Welcome the new player
-		module.exports.trigger('ioServerToSockets', {
-			sockets : [ socket ],
-			msg : 'Hello, Welcome to ElderMud!!!'
-		});
-		
-		// Notifiy everyone else of the new arrival
-		module.exports.trigger('ioSocketToAll', {
-			socket : socket,
-			'msg' : 'Someone has just entered the game!'
-		});
-	},
+		// Add new player
+		data.get('players').add();
+	}
 };
 
 // Extend to be an event dispatcher
