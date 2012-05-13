@@ -4,9 +4,13 @@ var Backbone = require('backbone');
 module.exports = {
 	// IO Handling
 	ioConnection : function(socket) {
-		module.exports.trigger('ioSendSockets', {
+		module.exports.trigger('ioServerToSockets', {
 			sockets : [ socket ],
 			msg : 'Hello, Welcome to ElderMud!!!'
+		});
+		module.exports.trigger('ioSocketToAll', {
+			socket : socket,
+			'msg' : 'Someone has just entered the game!'
 		});
 	},
 	ioDisconnect : function() {
