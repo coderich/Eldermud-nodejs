@@ -1,5 +1,5 @@
 var server = require('./controllers/http_controller').createServer();
-var io = require('socketio').listen(server);
+var io = require('socket.io').listen(server);
 var game = require('./controllers/game_controller');
 
 // We delegate inbound IO to the game controller
