@@ -1,9 +1,6 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
 
-// Extend to be an event dispatcher
-_.extend(module.exports, Backbone.Events);
-
 module.exports = {
 	// IO Handling
 	ioConnection : function(socket) {
@@ -19,3 +16,6 @@ module.exports = {
 
 	}
 };
+
+// Extend to be an event dispatcher
+_.extend(module.exports, Backbone.Events);
