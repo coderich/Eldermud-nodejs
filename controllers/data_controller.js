@@ -17,17 +17,7 @@ module.exports = {
 	},
 	load : function() {
 		var map = new Map({
-			rooms : new RoomCollection([ new Room({
-				id : 1,
-				e : 2,
-				title : 'idk',
-				description : 'idk'
-			}), new Room({
-				id : 2,
-				w : 1,
-				title : 'idk',
-				description : 'idk'
-			}) ])
+			rooms : new RoomCollection([ {}, {} ])
 		});
 
 		return new Data({
