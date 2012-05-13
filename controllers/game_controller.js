@@ -1,6 +1,6 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
-var data = require('data_controller').load();
+var data = require('./data_controller').load();
 
 // Every time a player is added
 data.get('players').on('add', function(player) {
