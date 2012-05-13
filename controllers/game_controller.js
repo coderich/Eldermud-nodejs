@@ -4,7 +4,7 @@ var Backbone = require('backbone');
 module.exports = {
 	// IO Handling
 	ioConnection : function(socket) {
-		this.trigger('ioSendSockets', {
+		module.exports.trigger('ioSendSockets', {
 			sockets : [ socket ],
 			msg : 'Hello, Welcome to ElderMud!!!'
 		});
