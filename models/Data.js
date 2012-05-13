@@ -1,7 +1,7 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
 
-var Map = requre('Map');
+var Map = require('./Map');
 var PlayerCollection = requre('./PlayerCollection');
 
 module.exports = Backbone.Model.extend({
