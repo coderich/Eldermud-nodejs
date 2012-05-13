@@ -26,7 +26,7 @@ module.exports = {
 				w : 1,
 				title : 'idk',
 				description : 'idk'
-			}) ]);
+			}) ])
 		});
 
 		return new Data({
