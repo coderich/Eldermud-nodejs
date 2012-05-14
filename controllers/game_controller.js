@@ -8,8 +8,14 @@ realm.get('players').on('add', function(player) {
 
 	});
 
-	module.exports.trigger('ioServerToAll', {
+	module.exports.trigger('ioSocketToAll', {
+		'socket' : player.socket,
 		'msg' : 'A new player has arrived!'
+	});
+
+	module.exports.trigger('ioServerToSockets', {
+		'sockets' : [ player.socket ],
+		'msg' : 'Welcome to Eldermud!'
 	});
 });
 
@@ -32,7 +38,10 @@ module.exports = {
 		});
 
 		// TODO - Authenticate
-		realm.get('players').add({room:1});
+		realm.get('players').add({
+			room : 1,
+			socket : socket
+		});
 	}
 };
 
