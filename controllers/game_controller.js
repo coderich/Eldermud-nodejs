@@ -9,7 +9,7 @@ realm.get('players').on('add', function(player) {
 	});
 
 	module.exports.trigger('ioSocketToAll', {
-		socket : player.socket,
+		socket : player.get('socket'),
 		msg : 'A new player has arrived!'
 	});
 
