@@ -32,7 +32,7 @@ module.exports = {
 		});
 
 		// TODO - Authenticate
-		realm.get('players').add();
+		realm.get('players').add({room:1});
 	}
 };
 
