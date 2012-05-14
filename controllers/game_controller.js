@@ -14,7 +14,7 @@ realm.get('players').on('add', function(player) {
 	});
 
 	module.exports.trigger('ioServerToSockets', {
-		sockets : [ player.socket ],
+		sockets : [ player.get('socket') ],
 		msg : 'Welcome to Eldermud!'
 	});
 });
