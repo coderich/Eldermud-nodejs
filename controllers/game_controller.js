@@ -9,13 +9,13 @@ realm.get('players').on('add', function(player) {
 	});
 
 	module.exports.trigger('ioSocketToAll', {
-		'socket' : player.socket,
-		'msg' : 'A new player has arrived!'
+		socket : player.socket,
+		msg : 'A new player has arrived!'
 	});
 
 	module.exports.trigger('ioServerToSockets', {
-		'sockets' : [ player.socket ],
-		'msg' : 'Welcome to Eldermud!'
+		sockets : [ player.socket ],
+		msg : 'Welcome to Eldermud!'
 	});
 });
 
@@ -25,7 +25,7 @@ module.exports = {
 		// Disconnect handler
 		socket.on('disconnect', function() {
 			module.exports.trigger('ioServerToAll', {
-				'msg' : 'Someone has just disconnected...'
+				msg : 'Someone has just disconnected...'
 			});
 		});
 
