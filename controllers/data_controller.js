@@ -16,12 +16,9 @@ module.exports = {
 
 	},
 	load : function() {
-		var map = new Map({
-			rooms : new RoomCollection([ {}, {} ])
-		});
-
-		return new Data({
-			map : map
-		});
+		var fs = require('fs');
+		var realm = fs.readFileSync('../data/realm.json', 'ascii');
+		console.log(realm);
+		return new Realm(realm);
 	}
 };
