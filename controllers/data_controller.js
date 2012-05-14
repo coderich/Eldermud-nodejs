@@ -3,7 +3,7 @@ var Player = require('../models/Player');
 var PlayerCollection = require('../models/PlayerCollection');
 var Room = require('../models/Room');
 var RoomCollection = require('../models/RoomCollection');
-var Data = require('../models/Data');
+var Realm = require('../models/Realm');
 
 module.exports = {
 	create : function() {

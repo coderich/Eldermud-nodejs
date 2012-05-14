@@ -1,9 +1,13 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
-var data = require('./data_controller').load();
+var realm = require('./data_controller').load();
 
 // Every time a player is added
-data.get('players').on('add', function(player) {
+realm.get('players').on('add', function(player) {
+	player.on('change:room', function() {
+
+	});
+
 	module.exports.trigger('ioServerToAll', {
 		'msg' : 'A new player has arrived!'
 	});
@@ -27,8 +31,8 @@ module.exports = {
 			});
 		});
 
-		// Add new player
-		data.get('players').add();
+		// TODO - Authenticate
+		realm.get('players').add();
 	}
 };
 
