@@ -47,8 +47,8 @@ module.exports = {
 		socket.on('message', function(msg) {
 			var cmd = helper.getCommand(msg);
 			switch (cmd) {
-			case config.contants.CMD_NORTH:
-			case config.contants.CMD_SOUTH:
+			case config.constants.CMD_NORTH:
+			case config.constants.CMD_SOUTH:
 			case config.constants.CMD_EAST:
 			case config.constants.CMD_WEST:
 				player.set({
