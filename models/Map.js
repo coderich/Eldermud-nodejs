@@ -7,6 +7,8 @@ module.exports = Backbone.Model.extend({
 		rooms : new RoomCollection()
 	},
 	initialize : function(args) {
-		this.rooms = new RoomCollection(args.rooms);
+		if (args && args.rooms) {
+			this.rooms = new RoomCollection(args.rooms);
+		}
 	}
 });
