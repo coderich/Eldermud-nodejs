@@ -51,6 +51,12 @@ module.exports = {
 			case config.constants.CMD_SOUTH:
 			case config.constants.CMD_EAST:
 			case config.constants.CMD_WEST:
+			case config.constants.CMD_NORTHEAST:
+			case config.constants.CMD_NORTHWEST:
+			case config.constants.CMD_SOUTHEAST:
+			case config.constants.CMD_SOUTHWEST:
+			case config.constants.CMD_UP:
+			case config.constants.CMD_DOWN:
 				var newRoomId = player.get('room').get('exits')[cmd];
 
 				if (typeof (newRoomId) !== 'undefined') {
