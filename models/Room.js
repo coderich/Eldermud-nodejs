@@ -8,38 +8,38 @@ module.exports = Backbone.Model.extend({
 		for ( var dir in this.get('exits')) {
 			switch (dir) {
 			case 'n':
-				str = str + 'north,';
+				str = str + 'north, ';
 				break;
 			case 's':
-				str += 'south,';
+				str += 'south, ';
 				break;
 			case 'e':
-				str = str + 'east,';
+				str = str + 'east, ';
 				break;
 			case 'w':
-				str = str + 'west,';
+				str = str + 'west, ';
 				break;
 			case 'ne':
-				str += 'northeast,';
+				str += 'northeast, ';
 				break;
 			case 'nw':
-				str += 'northwest,';
+				str += 'northwest, ';
 				break;
 			case 'se':
-				str += 'southeast,';
+				str += 'southeast, ';
 				break;
 			case 'sw':
-				str += 'southwest,';
+				str += 'southwest, ';
 				break;
 			case 'u':
-				str += 'up,';
+				str += 'up, ';
 				break;
 			case 'd':
-				str += 'down,';
+				str += 'down, ';
 				break;
 			}
 		}
 
-		return str.substr(0, str.length - 1)
+		return str.substr(0, str.length - 2);
 	}
 });
