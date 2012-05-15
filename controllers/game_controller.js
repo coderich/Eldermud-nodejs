@@ -45,7 +45,7 @@ module.exports = {
 		console.log(realm.get('map').get('rooms'));
 
 		realm.get('players').add({
-			room : realm.get('map').get('rooms')['1'],
+			room : realm.get('map').get('rooms').get(1),
 			socket : socket
 		});
 	}
