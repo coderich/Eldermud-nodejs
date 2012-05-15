@@ -45,8 +45,8 @@ module.exports = {
 		var rooms = map.get('rooms');
 		var room = rooms.at(0);
 		
-		console.log("Map: " + map);
-		console.log("Rooms: " + rooms);
+		console.log("Map: " + typeof(map));
+		console.log("Rooms: " + typeof(rooms));
 		console.log("Room: " + room);
 		
 		realm.get('players').add({
