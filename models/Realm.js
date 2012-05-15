@@ -8,5 +8,10 @@ module.exports = Backbone.Model.extend({
 	defaults : {
 		map : new Map(),
 		players : new PlayerCollection()
+	},
+	initialize : function(args) {
+		if (args && args.map) {
+			this.map = new Map(args.map);
+		}
 	}
 });
