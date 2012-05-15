@@ -92,7 +92,7 @@ module.exports = {
 			default:
 				module.exports.trigger('ioSocketToRooms', {
 					socket : this,
-					rooms : [ player.get('room') ],
+					rooms : [ player.get('room').get('id') ],
 					msg : 'Someone says: ' + msg
 				});
 				module.exports.trigger('ioServerToSockets', {
