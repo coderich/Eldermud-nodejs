@@ -51,9 +51,19 @@ module.exports = {
 			case config.constants.CMD_SOUTH:
 			case config.constants.CMD_EAST:
 			case config.constants.CMD_WEST:
-				player.set({
-					room : realm.get('map').get('rooms').get(player.get('room').get('exits')[cmd])
-				});
+				var newRoomId = player.get('room').get('exits')[cmd];
+
+				if (newRoom !== 'undefined') {
+					player.set({
+						room : realm.get('map').get('rooms').get(newRoomId)
+					});
+				} else {
+					module.exports.trigger('ioServerToSockets') {
+						socket : this,
+						msg : 'There is no exit in that direction!'
+					});
+				}
+
 				break;
 			default:
 				module.exports.trigger('ioSocketToAll', {
