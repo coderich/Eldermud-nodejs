@@ -8,8 +8,23 @@ var Player = require('../models/Player');
 realm.get('players').on('add', function(player) {
 	player.on('change:room', function(model, room) {
 		var socket = player.get('socket');
-		socket.leave(player.previous('room').get('id'));
-		socket.join(room.get('id'));
+		var previousRoomId = player.previous('room').get('id');
+		var newRoomId = room.get('id');
+
+		socket.leave(previousRoomId);
+		socket.join(newRoomId);
+
+		module.exports.trigger('ioSocketToRooms', {
+			socket : socket,
+			rooms : [ previousRoomId ],
+			msg : 'A player has just left the room'
+		});
+
+		module.exports.trigger('ioSocketToRooms', {
+			socket : socket,
+			rooms : [ newRoomId ],
+			msg : 'A player has just entered the room'
+		});
 
 		module.exports.trigger('ioServerToSockets', {
 			sockets : [ socket ],
