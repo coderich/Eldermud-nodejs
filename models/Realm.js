@@ -6,7 +6,6 @@ var PlayerCollection = require('./PlayerCollection');
 
 module.exports = Backbone.Model.extend({
 	defaults : {
-		map : new Map(),
 		players : new PlayerCollection()
 	},
 	initialize : function(args) {
