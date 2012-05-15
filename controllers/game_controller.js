@@ -44,7 +44,10 @@ module.exports = {
 			});
 		});
 
-		player.set('{room : 1, socket : socket}');
+		player.set({
+			room : 1,
+			socket : socket
+		});
 		realm.get('players').add(player);
 	}
 };
