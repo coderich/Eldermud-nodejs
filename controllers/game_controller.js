@@ -42,7 +42,7 @@ module.exports = {
 
 		// TODO - Authenticate
 		realm.get('players').add({
-			room : realm.get('map').get('rooms')[1],
+			room : realm.get('map').get('rooms')['1'],
 			socket : socket
 		});
 	}

@@ -1,16 +1,16 @@
 {
     map : {
         rooms : {
-            1 : {
+            '1' : {
                 title: 'Room 1 Title',
                 descr: 'Room 1 Descr',
                 exits : {
-                    e : 2
+                    e : '2'
                 }
             }, 
-            2 : {
+            '2' : {
                 exits : {
-                    w : 1
+                    w : '1'
                 }
             }
         }
