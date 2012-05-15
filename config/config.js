@@ -8,7 +8,9 @@
 		CMD_NORTHEAST : 'ne',
 		CMD_NORTHWEST : 'nw',
 		CMD_SOUTHEAST : 'se',
-		CMD_SOUTHWEST : 'sw'
+		CMD_SOUTHWEST : 'sw',
+		CMD_UP : 'u',
+		CMD_DOWN : 'd'
 	};
 
 	var aliases = new Object();
@@ -21,6 +23,8 @@
 	aliases[constants.CMD_NORTHWEST] = [ 'nw', 'northw', 'northwe', 'northwes', 'northwest' ];
 	aliases[constants.CMD_SOUTHEAST] = [ 'se', 'southe', 'southea', 'southeas', 'southeast' ];
 	aliases[constants.CMD_SOUTHWEST] = [ 'sw', 'southw', 'southwe', 'southwes', 'southwest' ];
+	aliases[constants.CMD_UP] = [ 'u', 'up' ];
+	aliases[constants.CMD_DOWN] = [ 'd', 'dow', 'down' ];
 
 	exports.constants = constants;
 	exports.aliases = aliases;
