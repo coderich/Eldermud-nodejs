@@ -5,8 +5,6 @@ module.exports = Backbone.Model.extend({
 	toString : function() {
 		var str = this.get('title') + "\n" + this.get('descr') + "\n" + "Obvious Exists: ";
 
-		console.log(str);
-
 		for ( var dir in this.get('exits')) {
 			switch (dir) {
 			case 'n':
@@ -42,7 +40,6 @@ module.exports = Backbone.Model.extend({
 			}
 		}
 
-		console.log(str);
-		return str.trim(',');
+		return str.substr(0, str.length - 1)
 	}
 });
