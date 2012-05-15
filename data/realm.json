@@ -32,7 +32,7 @@
                 title: 'Kitchen (Water Cooler)',
                 descr: '',
                 exits : {
-                    n : v,
+                    n : 'v',
                     w : 5
                 }
             },
@@ -64,7 +64,7 @@
                     n : 10,
                     s : 5,
                     w : 8,
-                    e : v
+                    e : 'v'
                 }
             },
             {
@@ -103,7 +103,7 @@
                 }
             },
             {
-                id: v,
+                id: 'v',
                 title: 'Kitchen (Vending Machine)',
                 descr: '',
                 exits : {
