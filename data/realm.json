@@ -1,22 +1,24 @@
 {
     map : {
-        rooms : [
-            {
-                id: 1,
-                title: 'Room 1 Title',
-                descr: 'Room 1 Descr',
-                exits : {
-                    e : 2
+        rooms : {
+            [
+                {
+                    id: 1,
+                    title: 'Room 1 Title',
+                    descr: 'Room 1 Descr',
+                    exits : {
+                        e : 2
+                    }
+                }, 
+                {
+                    id: 2,
+                    title: 'Room 2 Title',
+                    descr: 'Room 2 Descr',
+                    exits : {
+                        w : 1
+                    }
                 }
-            }, 
-            {
-                id: 2,
-                title: 'Room 2 Title',
-                descr: 'Room 2 Descr',
-                exits : {
-                    w : 1
-                }
-            }
-        ]
+            ]
+        }
     }
 }

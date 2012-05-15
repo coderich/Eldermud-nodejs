@@ -5,7 +5,7 @@ var RoomCollection = require('./RoomCollection');
 module.exports = Backbone.Model.extend({
 	initialize : function(args) {
 		if (args && args.rooms) {
-			this.model.rooms = new RoomCollection(args.rooms);
+			this.rooms = new RoomCollection(args.rooms);
 		}
 	}
 });
