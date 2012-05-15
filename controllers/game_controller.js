@@ -1,6 +1,6 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
-var config = require('../helpers/config');
+var config = require('../config/config');
 // TODO - perhaps pass in config to helper?
 var helper = require('../helpers/helper');
 var realm = require('./data_controller').load();
