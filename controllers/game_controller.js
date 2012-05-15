@@ -53,7 +53,7 @@ module.exports = {
 			case config.constants.CMD_WEST:
 				var newRoomId = player.get('room').get('exits')[cmd];
 
-				if (newRoomId !== 'undefined') {
+				if (typeof(newRoomId) !== 'undefined') {
 					player.set({
 						room : realm.get('map').get('rooms').get(newRoomId)
 					});
