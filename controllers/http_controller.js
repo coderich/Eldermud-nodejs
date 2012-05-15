@@ -9,7 +9,7 @@ module.exports = {
 		});
 
 		server.get('/', function(req, res) {
-			res.sendfile('./views/eldermud_view.html');
+			res.sendfile('./views/index.html');
 		});
 
 		// Return...
