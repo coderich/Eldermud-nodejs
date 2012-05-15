@@ -8,7 +8,7 @@ module.exports = Backbone.Model.extend({
 			break;
 		}
 
-		var str = room.get('title') + "\n" + room.get('description') + "\n" + "Obvious Exists: ";
+		var str = room.get('title') + "\n" + room.get('descr') + "\n" + "Obvious Exists: ";
 
 		for ( var dir in room.get('exists')) {
 			switch (dir) {
