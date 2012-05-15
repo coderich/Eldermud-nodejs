@@ -6,16 +6,14 @@ module.exports = {
 
 		// Config
 		//server.set('view engine', 'jade');
-		server.set('view options', {
-			layout : false
-		});
+		//server.set('view options', {layout : false});
 
 		// Routes
 		server.get('/*.(js|css)', function(req, res) {
 			res.sendfile('./public' + req.url);
 		});
 		server.get('/', function(req, res) {
-			res.sendfile('./public/eldermud_view.html');
+			res.sendfile('./views/eldermud_view.html');
 		});
 
 		// Return...
