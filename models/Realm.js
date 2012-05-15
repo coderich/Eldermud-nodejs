@@ -10,7 +10,7 @@ module.exports = Backbone.Model.extend({
 	},
 	initialize : function(args) {
 		if (args && args.map) {
-			map = new Map(args.map);
+			this.map = new Map(args.map);
 		}
 	}
 });
