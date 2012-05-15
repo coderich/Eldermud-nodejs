@@ -4,6 +4,7 @@ var config = require('../config/config');
 // TODO - perhaps pass in config to helper?
 var helper = require('../helpers/helper');
 var realm = require('./data_controller').load();
+var Player = require('../models/Player');
 
 // Every time a player is added
 realm.get('players').on('add', function(player) {
