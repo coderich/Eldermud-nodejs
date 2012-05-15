@@ -2,7 +2,7 @@ var config = require('../config/config.js');
 
 module.exports = {
 	getCommand : function(word) {
-		word = word.lowercase();
+		word = word.toLowerCase();
 		var aliases = config.aliases;
 
 		for ( var cmd in aliases) {
