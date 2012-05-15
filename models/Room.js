@@ -3,7 +3,7 @@ var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
 	toString : function() {
-		var str = this.get('title') + "\n" + this.get('descr') + "\n" + "Obvious Exists: ";
+		var str = this.get('title') + "\n" + /* this.get('descr') + "\n" + */"Obvious Exists: ";
 
 		for ( var dir in this.get('exits')) {
 			switch (dir) {

@@ -86,6 +86,7 @@
                 title: 'Kitchen (Far Window)',
                 descr: '',
                 exits : {
+                    s : 7,
                     e : 11,
                     w : 9
                 }
