@@ -24,8 +24,7 @@
                 title: 'Hallway (East of Kitchen)',
                 descr: '',
                 exits : {
-                    w : 1,
-                    e : 12
+                    w : 1
                 }
             },
             {
