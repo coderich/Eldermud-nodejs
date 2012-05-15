@@ -8,16 +8,16 @@ module.exports = Backbone.Model.extend({
 			for ( var dir in this.get('exists')[id]) {
 				switch (dir) {
 				case 'n':
-					str += 'north,';
+					str = str + 'north,';
 					break;
 				case 's':
 					str += 'south,';
 					break;
 				case 'e':
-					str += 'east,';
+					str = str + 'east,';
 					break;
 				case 'w':
-					str += 'west,';
+					str = str + 'west,';
 					break;
 				case 'ne':
 					str += 'northeast,';
