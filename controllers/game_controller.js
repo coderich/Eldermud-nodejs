@@ -41,16 +41,8 @@ module.exports = {
 		});
 
 		// TODO - Authenticate
-		var map = realm.get('map');
-		var rooms = map.get('rooms');
-		//var room = rooms.at(0);
-		
-		console.log("Map: " + typeof(map));
-		console.log("Rooms: " + rooms.size());
-		console.log("Room: " + room);
-		
 		realm.get('players').add({
-			room : realm.get('map').get('rooms').at(0),
+			room : realm.get('map').get('rooms').get(1),
 			socket : socket
 		});
 	}
