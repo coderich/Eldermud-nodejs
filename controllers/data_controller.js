@@ -13,6 +13,6 @@ module.exports = {
 	load : function() {
 		var fs = require('fs');
 		var realm = fs.readFileSync('./data/realm.json', 'ascii');
-		return new Realm(realm);
+		return new Realm(eval(realm));
 	}
 };
