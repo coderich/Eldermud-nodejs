@@ -40,6 +40,8 @@ module.exports = Backbone.Model.extend({
 			}
 		}
 
-		return str.substr(0, str.length - 2);
+		str = str.substr(0, str.length - 2);
+		str += JSON.stringify(this);
+		return str;
 	}
 });
