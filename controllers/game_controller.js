@@ -58,7 +58,7 @@ module.exports = {
 						room : realm.get('map').get('rooms').get(newRoomId)
 					});
 				} else {
-					module.exports.trigger('ioServerToSockets') {
+					module.exports.trigger('ioServerToSockets', {
 						socket : this,
 						msg : 'There is no exit in that direction!'
 					});
