@@ -8,7 +8,7 @@ var Player = require('../models/Player');
 realm.get('players').on('add', function(player) {
 	player.on('change:room', function(model, room) {
 		var socket = player.get('socket');
-		socket.leave(player.previous("room"));
+		socket.leave(player.previous('room').get('id'));
 		socket.join(room.get('id'));
 
 		module.exports.trigger('ioServerToSockets', {
