@@ -13,7 +13,7 @@ game.on('ioServerToSockets', function(e) {
 });
 game.on('ioServerToRooms', function(e) {
 	for ( var i = 0; i < e.rooms.length; i++) {
-		io.sockets['in'](e.rooms[i].send(e.msg));
+		io.sockets['in'](e.rooms[i].get('id')).send(e.msg);
 	}
 });
 game.on('ioServerToAll', function(e) {
@@ -21,7 +21,7 @@ game.on('ioServerToAll', function(e) {
 });
 game.on('ioSocketToRooms', function(e) {
 	for ( var i = 0; i < e.rooms.length; i++) {
-		e.socket.broadcast.to(e.rooms[i]).send(e.msg);
+		e.socket.broadcast.to(e.rooms[i].get('id')).send(e.msg);
 	}
 });
 game.on('ioSocketToAll', function(e) {

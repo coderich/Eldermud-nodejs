@@ -6,10 +6,14 @@ var Player = require('../models/Player');
 
 // Every time a player is added
 realm.get('players').on('add', function(player) {
-	player.on('change:room', function() {
+	player.on('change:room', function(model, room) {
+		var socket = player.get('socket');
+		socket.leave(player.previous("room"));
+		socket.join(room.get('id'));
+
 		module.exports.trigger('ioServerToSockets', {
-			sockets : [ player.get('socket') ],
-			msg : "\n" + player.get('room').toString()
+			sockets : [ socket ],
+			msg : "\n" + room.toString()
 		});
 	});
 
@@ -39,6 +43,7 @@ module.exports = {
 			room : realm.get('map').get('rooms').get(1),
 			socket : socket
 		});
+		socket.join(1);
 		realm.get('players').add(player);
 
 		// Message handler
@@ -70,8 +75,9 @@ module.exports = {
 
 				break;
 			default:
-				module.exports.trigger('ioSocketToAll', {
+				module.exports.trigger('ioSocketToRooms', {
 					socket : this,
+					rooms : [ player.get('room') ],
 					msg : 'Someone says: ' + msg
 				});
 				module.exports.trigger('ioServerToSockets', {
