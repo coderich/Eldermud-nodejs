@@ -1,5 +1,3 @@
-var _ = require('underscore')._;
-var Backbone = require('backbone');
 var config = require('../config/config');
 // TODO - perhaps pass in config to helper?
 var helper = require('../helpers/helper');
@@ -87,4 +85,6 @@ module.exports = {
 };
 
 // Extend to be an event dispatcher
+var _ = require('underscore')._;
+var Backbone = require('backbone');
 _.extend(module.exports, Backbone.Events);

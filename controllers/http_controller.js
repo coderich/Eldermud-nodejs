@@ -2,13 +2,13 @@ module.exports = {
 	createServer : function() {
 		// Modules
 		var server = require('express').createServer();
-		var jade = require('jade');
+		// require('jade');
 
 		// Config
-		server.set('view engine', 'jade');
-		server.set('view options', {
-			layout : false
-		});
+		/*
+		 * server.set('view engine', 'jade'); server.set('view options', {
+		 * layout : false });
+		 */
 
 		// Routes
 		server.get('/*.(js|css)', function(req, res) {
