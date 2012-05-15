@@ -6,7 +6,8 @@
                 title: 'Room 1 Title',
                 descr: 'Room 1 Descr',
                 exits : {
-                    e : 2
+                    e : 2,
+                    n : 3
                 }
             }, 
             {
@@ -15,6 +16,14 @@
                 descr: 'Room 2 Descr',
                 exits : {
                     w : 1
+                }
+            },
+            {
+                id: 3,
+                title: 'Room 3 Title',
+                descr: 'Room 3 Descr',
+                exits : {
+                    s : 1
                 }
             }
         ]
