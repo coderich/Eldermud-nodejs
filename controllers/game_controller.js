@@ -1,6 +1,6 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
-var Player = require('../data/Player');
+var Player = require('../models/Player');
 var realm = require('./data_controller').load();
 
 // Every time a player is added
