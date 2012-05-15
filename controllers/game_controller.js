@@ -22,7 +22,7 @@ realm.get('players').on('add', function(player) {
 
 	module.exports.trigger('ioServerToSockets', {
 		sockets : [ player.get('socket') ],
-		msg : "\n" + player.get('room').toString()
+		msg : "\n\n" + player.get('room').toString()
 	});
 });
 
