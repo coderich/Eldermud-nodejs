@@ -42,7 +42,7 @@ module.exports = {
 
 		// TODO - Authenticate
 		var map = realm.get('map');
-		var rooms = map.rooms;
+		var rooms = map.get('rooms');
 		var room = rooms[0];
 		
 		console.log("Map: " + typeof(map));
