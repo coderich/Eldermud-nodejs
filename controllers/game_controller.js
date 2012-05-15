@@ -53,13 +53,13 @@ module.exports = {
 			case config.constants.CMD_WEST:
 				var newRoomId = player.get('room').get('exits')[cmd];
 
-				if (typeof(newRoomId) !== 'undefined') {
+				if (typeof (newRoomId) !== 'undefined') {
 					player.set({
 						room : realm.get('map').get('rooms').get(newRoomId)
 					});
 				} else {
 					module.exports.trigger('ioServerToSockets', {
-						socket : this,
+						sockets : [ this ],
 						msg : 'There is no exit in that direction!'
 					});
 				}
