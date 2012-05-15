@@ -41,10 +41,7 @@ module.exports = {
 		});
 
 		// TODO - Authenticate
-		console.log("MAP: " + realm.get('map'));
-		console.log("ROOMS: " + realm.get('map').get('rooms'));
-		console.log("ROOM: " + realm.get('map').get('rooms').at(0));
-
+		console.log("TRYING TO GET ROOM");
 		realm.get('players').add({
 			room : realm.get('map').get('rooms').get(1),
 			socket : socket
