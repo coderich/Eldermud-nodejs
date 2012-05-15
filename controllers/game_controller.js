@@ -5,7 +5,10 @@ var realm = require('./data_controller').load();
 // Every time a player is added
 realm.get('players').on('add', function(player) {
 	player.on('change:room', function() {
-
+		module.exports.trigger('ioServerToSockets', {
+			sockets : [ player.get('socket') ],
+			msg : 'You moved...'
+		});
 	});
 
 	module.exports.trigger('ioSocketToAll', {
