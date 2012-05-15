@@ -15,7 +15,7 @@ module.exports = {
 			res.sendfile('./public' + req.url);
 		});
 		server.get('/', function(req, res) {
-			res.sendFile('./public/eldermud_view.html');
+			res.sendfile('./public/eldermud_view.html');
 		});
 
 		// Return...
