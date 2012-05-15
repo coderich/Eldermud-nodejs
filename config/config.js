@@ -1,14 +1,14 @@
 (function() {
 	var constants = {
 		CMD_ATTACK : 1,
-		CMD_NORTH : 2,
-		CMD_SOUTH : 3,
-		CMD_EAST : 4,
-		CMD_WEST : 5,
-		CMD_NORTHEAST : 6,
-		CMD_NORTHWEST : 7,
-		CMD_SOUTHEAST : 8,
-		CMD_SOUTHWEST : 9
+		CMD_NORTH : 'n',
+		CMD_SOUTH : 's',
+		CMD_EAST : 'e',
+		CMD_WEST : 'w',
+		CMD_NORTHEAST : 'ne',
+		CMD_NORTHWEST : 'nw',
+		CMD_SOUTHEAST : 'se',
+		CMD_SOUTHWEST : 'sw'
 	};
 
 	var aliases = new Object();

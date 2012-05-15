@@ -1,5 +1,8 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
+var config = require('../helpers/config');
+// TODO - perhaps pass in config to helper?
+var helper = require('../helpers/helper');
 var realm = require('./data_controller').load();
 
 // Every time a player is added
@@ -7,7 +10,7 @@ realm.get('players').on('add', function(player) {
 	player.on('change:room', function() {
 		module.exports.trigger('ioServerToSockets', {
 			sockets : [ player.get('socket') ],
-			msg : 'You moved...'
+			msg : player.get('room').toString()
 		});
 	});
 
@@ -32,18 +35,36 @@ module.exports = {
 			});
 		});
 
-		// Message handler
-		socket.on('message', function(msg) {
-			module.exports.trigger('ioSocketToAll', {
-				socket : this,
-				msg : msg
-			});
-		});
-
 		// TODO - Authenticate
-		realm.get('players').add({
+		var player = new Player({
 			room : realm.get('map').get('rooms').get(1),
 			socket : socket
+		});
+		realm.get('players').add(player);
+
+		// Message handler
+		socket.on('message', function(msg) {
+			var cmd = helper.getCommand(msg);
+			switch (cmd) {
+			case config.contants.CMD_NORTH:
+			case config.contants.CMD_SOUTH:
+			case config.constants.CMD_EAST:
+			case config.constants.CMD_WEST:
+				player.set({
+					room : realm.get('map').get('rooms').get(player.get('room').get('exits')[cmd])
+				});
+				break;
+			default:
+				module.exports.trigger('ioSocketToAll', {
+					socket : this,
+					msg : 'Someone says: ' + msg
+				});
+				module.exports.trigger('ioServerToSockets', {
+					sockets : [ this ],
+					msg : 'You say: ' + msg
+				});
+				break;
+			}
 		});
 	}
 };
