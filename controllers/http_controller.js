@@ -5,10 +5,10 @@ module.exports = {
 		// require('jade');
 
 		// Config
-		/*
-		 * server.set('view engine', 'jade'); server.set('view options', {
-		 * layout : false });
-		 */
+		//server.set('view engine', 'jade');
+		server.set('view options', {
+			layout : false
+		});
 
 		// Routes
 		server.get('/*.(js|css)', function(req, res) {
