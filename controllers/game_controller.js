@@ -41,8 +41,9 @@ module.exports = {
 		});
 
 		// TODO - Authenticate
-		console.log(realm.get('map'));
-		console.log(realm.get('map').get('rooms'));
+		console.log("MAP: " + realm.get('map'));
+		console.log("ROOMS: " + realm.get('map').get('rooms'));
+		console.log("ROOM: " + realm.get('map').get('rooms').get(1));
 
 		realm.get('players').add({
 			room : realm.get('map').get('rooms').get(1),
