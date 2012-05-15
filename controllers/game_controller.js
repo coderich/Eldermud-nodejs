@@ -1,16 +1,10 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
+var Player = require('../data/Player');
 var realm = require('./data_controller').load();
 
 // Every time a player is added
 realm.get('players').on('add', function(player) {
-	player.on('change:room', function() {
-		module.exports.trigger('ioServerToSockets', {
-			sockets : [ player.get('socket') ],
-			msg : 'You moved...'
-		});
-	});
-
 	module.exports.trigger('ioSocketToAll', {
 		socket : player.get('socket'),
 		msg : 'A new player has arrived!'
@@ -41,10 +35,17 @@ module.exports = {
 		});
 
 		// TODO - Authenticate
-		realm.get('players').add({
-			room : 1,
-			socket : socket
+		var player = new Player();
+
+		player.on('change:room', function() {
+			module.exports.trigger('ioServerToSockets', {
+				sockets : [ player.get('socket') ],
+				msg : 'You moved...'
+			});
 		});
+
+		player.set('{room : 1, socket : socket}');
+		realm.get('players').add(player);
 	}
 };
 
