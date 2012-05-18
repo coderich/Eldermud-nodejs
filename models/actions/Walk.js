@@ -4,16 +4,22 @@ var Visual = require('../observables/Visual');
 module.exports = Action.extend({
 	getOpening : function() {
 		var direction = this.get('direction');
+		var player = this.get('player');
+		var username = player.get('username');
+
 		return [ new Visual({
 			firstPerson : 'You begin to walk ' + direction + ' ...',
-			thirdPerson : source.get('username') + ' begins to walk ' + direction + ' ...'
+			thirdPerson : username + ' begins to walk ' + direction + ' ...'
 		}) ];
 	},
 	getClosing : function() {
 		var direction = this.get('direction');
+		var player = this.get('player');
+		var username = player.get('username');
+
 		return [ new Visual({
 			firstPerson : null,
-			thirdPerson : source.get('username') + ' has left ' + direction
+			thirdPerson : username + ' has left ' + direction
 		}) ];
 	}
 });

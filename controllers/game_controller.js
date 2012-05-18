@@ -64,7 +64,7 @@ module.exports = {
 		// Message handler
 		socket.on('message', function(msg) {
 			var cmd = helper.getCommand(msg);
-			var action = helper.getAction(cmd);
+			var action = helper.getAction(cmd, player);
 			var observables = action.getOpening();
 			
 			// Show the opening
