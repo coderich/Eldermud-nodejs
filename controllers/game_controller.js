@@ -68,7 +68,7 @@ module.exports = {
 
 			// Intent
 			var intent = action.getIntent(player, player);
-			if (intent !== 'undefined') {
+			if (intent !== null) {
 				module.exports.trigger('ioServerToSockets', {
 					sockets : [ this ],
 					msg : intent
