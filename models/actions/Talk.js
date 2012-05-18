@@ -1,4 +1,4 @@
-var _ = require('underscore')._;
-var Backbone = require('backbone');
+var Action = require('./Action');
+var Sound = require('../consequences/Sound');
 
-module.exports = Backbone.Model.extend({});
+module.exports = Action.extend({});

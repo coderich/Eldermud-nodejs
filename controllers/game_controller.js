@@ -64,6 +64,18 @@ module.exports = {
 		// Message handler
 		socket.on('message', function(msg) {
 			var cmd = helper.getCommand(msg);
+			var action = helper.getAction(cmd);
+
+			// Intent
+			var intent = action.getIntent(player, player);
+			if (intent !== 'undefined') {
+				module.exports.trigger('ioServerToSockets', {
+					sockets : [ this ],
+					msg : intent
+				});
+			}
+
+			/*
 			switch (cmd) {
 			case config.constants.CMD_NORTH:
 			case config.constants.CMD_SOUTH:
@@ -101,6 +113,7 @@ module.exports = {
 				});
 				break;
 			}
+			*/
 		});
 	}
 };
