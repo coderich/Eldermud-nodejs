@@ -2,5 +2,10 @@ var _ = require('underscore')._;
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
-	getIntent : function() { return null; }
+	getOpening : function() {
+		return null;
+	},
+	getClosing : function() {
+		return null;
+	}
 });

@@ -1,4 +1,3 @@
-var _ = require('underscore')._;
-var Backbone = require('backbone');
+var Action = require('./Observable');
 
-module.exports = Backbone.Model.extend({});
+module.exports = Observable.extend({});

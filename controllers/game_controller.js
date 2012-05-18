@@ -65,12 +65,12 @@ module.exports = {
 		socket.on('message', function(msg) {
 			var cmd = helper.getCommand(msg);
 			var action = helper.getAction(cmd);
-			var intentions  = action.getIntentions(player, player);
+			var observables = action.getOpening(player, player);
 			
-			for (var i=0; i<intentions.length; i++) {
+			for (var i=0; i<observables.length; i++) {
 				module.exports.trigger('ioServerToSockets', {
 					sockets : [ this ],
-					msg : intentions[i].get('msg')
+					msg : observables[i].get('msg')
 				});
 			}
 
