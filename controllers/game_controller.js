@@ -65,13 +65,13 @@ module.exports = {
 		socket.on('message', function(msg) {
 			var cmd = helper.getCommand(msg);
 			var action = helper.getAction(cmd);
-			var observables = action.getOpening(player, player);
+			var observables = action.getOpening();
 			
 			// Show the opening
 			for (var i=0; i<observables.length; i++) {
 				module.exports.trigger('ioServerToSockets', {
 					sockets : [ this ],
-					msg : observables[i].get('msg')
+					msg : observables[i].get('firstPerson')
 				});
 			}
 
