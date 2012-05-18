@@ -1,4 +1,4 @@
 var Action = require('./Action');
-var Sound = require('../consequences/Sound');
+var Sound = require('../observables/Sound');
 
 module.exports = Action.extend({});
