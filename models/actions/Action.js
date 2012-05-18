@@ -3,9 +3,9 @@ var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
 	getOpening : function() {
-		return null;
+		return [];
 	},
 	getClosing : function() {
-		return null;
+		return [];
 	}
 });
