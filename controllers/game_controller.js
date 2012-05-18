@@ -66,7 +66,7 @@ module.exports = {
 			var cmd = helper.getCommand(msg);
 			var action = helper.getAction(cmd);
 
-			for (var intention = action.getIntensions(player, player)) {
+			for (var intention in action.getIntensions(player, player)) {
 				module.exports.trigger('ioServerToSockets', {
 					sockets : [ this ],
 					msg : intention.get('msg')
