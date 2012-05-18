@@ -67,6 +67,7 @@ module.exports = {
 			var action = helper.getAction(cmd);
 			var observables = action.getOpening(player, player);
 			
+			// Show the opening
 			for (var i=0; i<observables.length; i++) {
 				module.exports.trigger('ioServerToSockets', {
 					sockets : [ this ],
