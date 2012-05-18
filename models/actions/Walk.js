@@ -1,15 +1,20 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
 var Action = require('./Action');
+var Visual = require('../observables/Visual');
 
 module.exports = Action.extend({
-	getIntent : function(source, witness) {
+	getIntentions : function(source, witness) {
 		var direction = this.get('direction');
 
 		if (source === witness) {
-			return 'You begin to walk ' + direction + ' ...';
+			return [ new Visual({
+				msg : 'You begin to walk ' + direction + ' ...'
+			}) ];
 		} else {
-			return source.get('username') + ' begins to walk ' + direction + ' ...';
+			return [ new Visual({
+				msg : source.get('username') + ' begins to walk ' + direction + ' ...'
+			}) ];
 		}
 	}
 });

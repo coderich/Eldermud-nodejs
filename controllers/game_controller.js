@@ -66,12 +66,10 @@ module.exports = {
 			var cmd = helper.getCommand(msg);
 			var action = helper.getAction(cmd);
 
-			// Intent
-			var intent = action.getIntent(player, player);
-			if (intent !== null) {
+			for (var intention = action.getIntensions(player, player)) {
 				module.exports.trigger('ioServerToSockets', {
 					sockets : [ this ],
-					msg : intent
+					msg : intention.get('msg')
 				});
 			}
 
