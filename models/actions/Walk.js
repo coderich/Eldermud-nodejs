@@ -1,7 +1,8 @@
 var _ = require('underscore')._;
 var Backbone = require('backbone');
+var Action = require('./Action');
 
-module.exports = Backbone.Model.extend({
+module.exports = Action.extend({
 	getIntent : function(source, witness) {
 		var direction = this.get('direction');
 
