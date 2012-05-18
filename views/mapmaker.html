@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>ElderMap</title>
+<script class="jsbin" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+article,aside,figure,footer,header,hgroup,menu,nav,section {
+	display: block;
+}
+
+#grid {
+	width: 960px;
+	height: 600px;
+	border: solid;
+	position: relative;
+	overflow: auto;
+}
+
+.room {
+	width: 30px;
+	height: 30px;
+	background: grey;
+	margin: 1px;
+	text-align: center;
+}
+</style>
+<script>
+	$(document).ready(function() {
+		draw(6, 5);
+
+		function draw(width, height) {
+			var grid = $('#grid');
+
+			// Create Divs
+			for ( var y = 0; y < height; y++) {
+				for ( var x = 1; x <= width; x++) {
+					var id = ((y * width) + x);
+					grid.append('<div id="' + id + '" class="room">' + id + '</div>');
+				}
+			}
+
+			// Align Divs
+			var total = width * height;
+			var up = 1;
+			var right = 1;
+			var down = 2;
+			var left = 2;
+			var x = grid.width() / 2 - 15;
+			var y = grid.height() / 2 - 15;
+
+			var id = 1;
+			var room = $('#' + id);
+			room.css('left', x);
+			room.css('top', y);
+			room.css('position', 'absolute');
+
+			while (id < total) {
+				// Up
+				for ( var j = 0; j < up; j++) {
+					if (j < height - 1) {
+						id++;
+						y -= 30;
+
+						var room = $('#' + id);
+						room.css('left', x);
+						room.css('top', y);
+						room.css('position', 'absolute');
+					} else {
+						x += 30 * (right - 1);
+						right -= up;
+						break;
+					}
+				}
+				up += 2;
+
+				// Right
+				for ( var j = 0; j < right; j++) {
+					if (j < width - 1) {
+						id++;
+						x += 30
+
+						var room = $('#' + id);
+						room.css('left', x);
+						room.css('top', y);
+						room.css('position', 'absolute');
+					} else {
+						y += 30 * (down - 1);
+						down -= right;
+						break;
+					}
+				}
+				right += 2;
+
+				// Down
+				for ( var j = 0; j < down; j++) {
+					if (j < height - 1) {
+						id++;
+						y += 30;
+
+						var room = $('#' + id);
+						room.css('left', x);
+						room.css('top', y);
+						room.css('position', 'absolute');
+					} else {
+						x -= 30 * (left - 1);
+						left -= down;
+						break;
+					}
+				}
+				down += 2;
+
+				// Left
+				for ( var j = 0; j < left; j++) {
+					if (j < width - 1) {
+						id++;
+						x -= 30;
+
+						var room = $('#' + id);
+						room.css('left', x);
+						room.css('top', y);
+						room.css('position', 'absolute');
+					} else {
+						y -= 30 * (up - 1);
+						up -= left;
+						break;
+					}
+				}
+				left += 2;
+			}
+		}
+	});
+</script>
+</head>
+<body>
+	<div id="grid"></div>
+</body>
+</html>

@@ -53,6 +53,8 @@ module.exports = {
 			});
 		});
 
+		//
+		//
 		// TODO - Authenticate
 		var player = new Player({
 			room : realm.get('map').get('rooms').get(1),
@@ -61,14 +63,16 @@ module.exports = {
 		socket.join(1);
 		realm.get('players').add(player);
 
+		//
+		//
 		// Message handler
 		socket.on('message', function(msg) {
 			var cmd = helper.getCommand(msg);
 			var action = helper.getAction(cmd, player);
 			var observables = action.getOpening();
-			
+
 			// Show the opening
-			for (var i=0; i<observables.length; i++) {
+			for ( var i = 0; i < observables.length; i++) {
 				module.exports.trigger('ioServerToSockets', {
 					sockets : [ this ],
 					msg : observables[i].get('firstPerson')
@@ -76,44 +80,26 @@ module.exports = {
 			}
 
 			/*
-			switch (cmd) {
-			case config.constants.CMD_NORTH:
-			case config.constants.CMD_SOUTH:
-			case config.constants.CMD_EAST:
-			case config.constants.CMD_WEST:
-			case config.constants.CMD_NORTHEAST:
-			case config.constants.CMD_NORTHWEST:
-			case config.constants.CMD_SOUTHEAST:
-			case config.constants.CMD_SOUTHWEST:
-			case config.constants.CMD_UP:
-			case config.constants.CMD_DOWN:
-				var newRoomId = player.get('room').get('exits')[cmd];
-
-				if (typeof (newRoomId) !== 'undefined') {
-					player.set({
-						room : realm.get('map').get('rooms').get(newRoomId)
-					});
-				} else {
-					module.exports.trigger('ioServerToSockets', {
-						sockets : [ this ],
-						msg : 'There is no exit in that direction!'
-					});
-				}
-
-				break;
-			default:
-				module.exports.trigger('ioSocketToRooms', {
-					socket : this,
-					rooms : [ player.get('room').get('id') ],
-					msg : 'Someone says: ' + msg
-				});
-				module.exports.trigger('ioServerToSockets', {
-					sockets : [ this ],
-					msg : 'You say: ' + msg
-				});
-				break;
-			}
-			*/
+			 * switch (cmd) { case config.constants.CMD_NORTH: case
+			 * config.constants.CMD_SOUTH: case config.constants.CMD_EAST: case
+			 * config.constants.CMD_WEST: case config.constants.CMD_NORTHEAST:
+			 * case config.constants.CMD_NORTHWEST: case
+			 * config.constants.CMD_SOUTHEAST: case
+			 * config.constants.CMD_SOUTHWEST: case config.constants.CMD_UP:
+			 * case config.constants.CMD_DOWN: var newRoomId =
+			 * player.get('room').get('exits')[cmd];
+			 * 
+			 * if (typeof (newRoomId) !== 'undefined') { player.set({ room :
+			 * realm.get('map').get('rooms').get(newRoomId) }); } else {
+			 * module.exports.trigger('ioServerToSockets', { sockets : [ this ],
+			 * msg : 'There is no exit in that direction!' }); }
+			 * 
+			 * break; default: module.exports.trigger('ioSocketToRooms', {
+			 * socket : this, rooms : [ player.get('room').get('id') ], msg :
+			 * 'Someone says: ' + msg });
+			 * module.exports.trigger('ioServerToSockets', { sockets : [ this ],
+			 * msg : 'You say: ' + msg }); break; }
+			 */
 		});
 	}
 };
