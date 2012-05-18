@@ -1,6 +1,6 @@
 var config = require('../config/config.js');
-var Walk = require('../models/actions/Walk.js');
-var Talk = require('../models/actions/Talk.js');
+var Walk = require('../models/actions/Walk');
+var Talk = require('../models/actions/Talk');
 
 module.exports = {
 	getCommand : function(word) {
